@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intrusion Dashboard</title>
+</head>
+<body>
+    <h1>Intrusion Dashboard</h1>
+    
+    <h2>Latest Intrusions</h2>
+    <table border="1">
+        <tr>
+            <th>IP Address</th>
+            <th>Type</th>
+            <th>Risk Score</th>
+            <th>Detected At</th>
+        </tr>
+        {% for intrusion in intrusions %}
+        <tr>
+            <td>{{ intrusion.ip_address }}</td>
+            <td>{{ intrusion.intrusion_type }}</td>
+            <td>{{ intrusion.risk_score }}</td>
+            <td>{{ intrusion.detected_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Blocked IPs</h2>
+    <table border="1">
+        <tr>
+            <th>IP Address</th>
+            <th>Blocked At</th>
+        </tr>
+        {% for ip in blocked_ips %}
+        <tr>
+            <td>{{ ip.ip_address }}</td>
+            <td>{{ ip.blocked_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
