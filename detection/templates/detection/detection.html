@@ -1,0 +1,38 @@
+<!-- Templates/detection/detection.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection</title>
+</head>
+<body>
+    <h1>Intrusion Detection Logs</h1>
+
+    {% if intrusions %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>Type</th>
+                <th>Risk Score</th>
+                <th>Detected At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for intrusion in intrusions %}
+            <tr>
+                <td>{{ intrusion.ip_address }}</td>
+                <td>{{ intrusion.intrusion_type }}</td>
+                <td>{{ intrusion.risk_score }}</td>
+                <td>{{ intrusion.detected_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No intrusions detected yet.</p>
+    {% endif %}
+
+</body>
+</html>

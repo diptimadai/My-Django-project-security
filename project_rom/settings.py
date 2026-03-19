@@ -15,14 +15,25 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        # "DIRS": [], #it is empty for app level templates
+
+        "DIRS": [os.path.join(BASE_DIR, "Templates")],
+        
         "APP_DIRS": True,
-        "OPTIONS": {...},
-    }
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.template.context_processors.debug",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+
+            ],
+        },
+    },
 ]
 
 # Quick-start development settings - unsuitable for production
